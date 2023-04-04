@@ -8,7 +8,7 @@
 }
 
 .hfh-course-progress .hfh-course-progress-list li {
-  margin-bottom: 16px;
+  margin-bottom: 1rem;
 }
 
 .hfh-course-progress .hfh-chapter td,
@@ -17,11 +17,12 @@
 }
 
 .hfh-course-progress .hfh-progress-bar-wrapper {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 10rem;
   align-items: center;
-  margin-bottom: 8px;
+  margin-bottom: 0.5rem;
   justify-content: space-between;
-  gap: 16px;
+  gap: 1rem;
 }
 
 .hfh-course-progress .hfh-progress-bar {
@@ -33,14 +34,13 @@
 }
 
 .hfh-course-progress .hfh-progress-bar__value {
-  height: 24px;
+  height: 1.5rem;
   background-color: #be1925;
 }
 
 .hfh-course-progress .hfh-progress-bar__count {
   flex-shrink: 0;
   font-size: 1rem;
-  width: 120px;
   text-align: right;
 }
 
@@ -64,8 +64,8 @@
 }
 
 .hfh-chapter__progress-indicator {
-  width: 24px;
-  height: 24px;
+  width: 1.5rem;
+  height: 1.5rem;
   fill: #f2d1d3;
   stroke: #be1925;
   flex-shrink: 0;
