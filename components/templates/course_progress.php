@@ -8,7 +8,7 @@ $progress = CourseProgress::get_instance()->get_progress();
 
 ?>
 <div class="hfh-course-progress">
-    <h2>Course Progress</h2>
+    <h2><?= __('Course Progress', 'pressbooks-hfh') ?></h2>
     <?= CourseProgress::get_instance()->get_progress_bar_template($progress) ?>
     <ul class="hfh-course-progress-list">
         <?php foreach ($progress['parts'] as $part) : ?>

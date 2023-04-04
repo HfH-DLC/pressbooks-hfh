@@ -70,7 +70,8 @@ class CourseProgress
                 'ajaxNonce'    => wp_create_nonce(self::NONCE_ACTION),
                 'setCompleteText' => __('Mark Chapter as Complete', 'pressbooks-hfh'),
                 'setIncompleteText' => __('Mark Chapter as Incomplete', 'pressbooks-hfh'),
-                'progress' => $this->get_progress()
+                'progress' => $this->get_progress(),
+                'progressLinkText' => __('Progress', 'pressbooks-hfh')
             )
         );
     }
@@ -153,8 +154,8 @@ class CourseProgress
         <table class="hfh-chapter">
             <thead class="hfh-visually-hidden">
                 <tr>
-                    <th class="hfh-chapter__name">Chapter</th>
-                    <th class="hfh-chapter__status">Status</th>
+                    <th class="hfh-chapter__name"><?= __('Chapter', 'pressbooks-hfh') ?></th>
+                    <th class="hfh-chapter__status"><?= __('Status', 'pressbooks-hfh') ?></th>
                 </tr>
             </thead>
             <tbody>
@@ -165,12 +166,12 @@ class CourseProgress
                         </td>
                         <td>
                             <?php if ($chapter['complete']) : ?>
-                                <div class="hfh-visually-hidden">Chapter Complete</div>
+                                <div class="hfh-visually-hidden"><?= __('Chapter Complete', 'pressbooks-hfh') ?></div>
                                 <svg class="hfh-chapter__progress-indicator hfh-chapter__progress-indicator--complete" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
                                     <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
                                 </svg>
                             <?php else : ?>
-                                <div class="hfh-visually-hidden">Chapter Incomplete</div>
+                                <div class="hfh-visually-hidden"><?= __('Chapter Incomplete', 'pressbooks-hfh') ?></div>
                                 <svg class="hfh-chapter__progress-indicator" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" stroke-width="1">
                                     <circle cx="10" cy="10" r="7.5" />
                                 </svg>
@@ -194,7 +195,7 @@ class CourseProgress
             <div class="hfh-progress-bar">
                 <div class="hfh-progress-bar__value" style="width:<?= $percentage ?>%"></div>
             </div>
-            <div class="hfh-progress-bar__count"><span class="hfh-progress-bar__percentage"><?= $percentage ?>% Complete</span></div>
+            <div class="hfh-progress-bar__count"><span class="hfh-progress-bar__percentage"><?php printf(__('%s%% Complete', 'pressbooks-hfh'), $percentage) ?></span></div>
         </div>
 <?php
         return ob_get_clean();
