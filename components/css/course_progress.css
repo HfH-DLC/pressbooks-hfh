@@ -1,0 +1,90 @@
+.hfh-course-progress {
+    margin-block: 2rem;
+}
+
+.hfh-course-progress .hfh-course-progress-list {
+    list-style: none;
+    padding: 0;
+}
+
+.hfh-course-progress .hfh-course-progress-list li {
+    margin-bottom: 16px;
+}
+
+.hfh-course-progress .hfh-chapter td,
+.hfh-course-progress .hfh-chapter th {
+    vertical-align: middle;
+}
+
+.hfh-course-progress .hfh-progress-bar-wrapper {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+    justify-content: space-between;
+    gap: 16px;
+}
+
+.hfh-course-progress .hfh-progress-bar {
+    position: relative;
+    background-color: #F2D1D3;
+    width: 100%;
+    overflow: hidden;
+    border: 1px solid #be1925;
+}
+
+.hfh-course-progress .hfh-progress-bar__value {
+    height: 24px;
+    background-color: #be1925;
+}
+
+.hfh-course-progress .hfh-progress-bar__count {
+    flex-shrink: 0;
+    font-size: 1rem;
+    width: 120px;
+    text-align: right;
+}
+
+.hfh-course-progress .hfh-progress-bar__percentage {
+    font-weight: bold;
+    color: #be1925;
+}
+
+.hfh-course-progress .hfh-chapter {
+    margin-top: 1rem;
+    width: 100%;
+}
+
+.hfh-course-progress td:first-child {
+    width: 90%;
+}
+
+.hfh-course-progress td:last-child {
+    width: 10%;
+    text-align: right;
+}
+
+.hfh-chapter__progress-indicator {
+    width: 24px;
+    height: 24px;
+    fill: #F2D1D3;
+    stroke: #be1925;
+    flex-shrink: 0;
+}
+
+.hfh-chapter__progress-indicator--complete {
+    fill: #be1925;
+    stroke: none;
+}
+
+.hfh-visually-hidden {
+    position: absolute;
+    left: -10000px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+
+#hfh-course-progress-chapter-complete {
+    margin-top: 3rem;
+}

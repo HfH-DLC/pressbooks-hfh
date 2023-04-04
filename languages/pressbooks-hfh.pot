@@ -1,0 +1,49 @@
+# Copyright (C) 2022 Sarah Frederickx, Stephan Müller & Lukas Kaiser
+# This file is distributed under the GPLv2.
+msgid ""
+msgstr ""
+"Project-Id-Version: Pressbooks HfH 1.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/pressbooks-hfh\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2022-04-27T12:29:49+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.5.0\n"
+"X-Domain: pressbooks-hfh\n"
+
+#. Plugin Name of the plugin
+msgid "Pressbooks HfH"
+msgstr ""
+
+#. Description of the plugin
+msgid "HfH additions for Pressbooks"
+msgstr ""
+
+#. Author of the plugin
+msgid "Sarah Frederickx, Stephan Müller & Lukas Kaiser"
+msgstr ""
+
+#: components/book_posts_password.php:35
+#: components/book_posts_password.php:36
+msgid "Book Posts Password"
+msgstr ""
+
+#: components/book_posts_password.php:52
+msgid "Password set successfully."
+msgstr ""
+
+#: components/book_posts_password.php:59
+msgid "Password for all Book Posts"
+msgstr ""
+
+#: components/book_posts_password.php:62
+msgid "Save"
+msgstr ""
+
+#: pressbooks-hfh.php:115
+#: pressbooks-hfh.php:116
+msgid "Chapter Categories"
+msgstr ""
