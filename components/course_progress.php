@@ -20,6 +20,7 @@ class CourseProgress
     const NONCE_ACTION = 'hfh_chapter_complete';
     const PROGRESS_PAGE_NAME = 'progress';
     const PROGRESS_USER_META_KEY = 'hfh-course-progress';
+    const ACTIVE_OPTION = 'hfh_pressbooks_progress_active';
 
     public static function get_instance()
     {
@@ -31,7 +32,9 @@ class CourseProgress
 
     private function __construct()
     {
-        add_action('init', array($this, 'init'));
+        if (get_option(self::ACTIVE_OPTION)) {
+            add_action('init', array($this, 'init'));
+        }
     }
 
     public function init()
@@ -65,8 +68,8 @@ class CourseProgress
                 'progressURL' => home_url('progress'),
                 'ajaxURL' => admin_url('admin-ajax.php'),
                 'ajaxNonce'    => wp_create_nonce(self::NONCE_ACTION),
-                'setCompleteText' => 'Mark Chapter as Complete',
-                'setIncompleteText' => 'Mark Chapter as Incomplete',
+                'setCompleteText' => __('Mark Chapter as Complete', 'pressbooks-hfh'),
+                'setIncompleteText' => __('Mark Chapter as Incomplete', 'pressbooks-hfh'),
                 'progress' => $this->get_progress()
             )
         );
@@ -184,7 +187,7 @@ class CourseProgress
 
     public function get_progress_bar_template($progress)
     {
-        $percentage = $progress['total'] == 0 ? 100 : $progress['complete'] / $progress['total'] * 100;
+        $percentage = $progress['total'] == 0 ? 100 : intdiv($progress['complete'] * 100, $progress['total']);
         ob_start();
     ?>
         <div class="hfh-progress-bar-wrapper">
@@ -220,7 +223,7 @@ class CourseProgress
         global $post;
         if ($this->show_complete_button($post)) {
             $isComplete = $this->is_chapter_complete($post->ID);
-            $form = '<form id="hfh-course-progress-chapter-complete" method="POST"><input type="hidden" name="action" value="hfh_chapter_complete" /><input type="hidden" name="value" value="' . !$isComplete . '" /><input type="hidden" name="post" value="' . $post->ID . '" /><button type="submit">' . ($isComplete ? 'Mark Chapter as Incomplete' : 'Mark Chapter as Complete') . '</button></form>';
+            $form = '<form id="hfh-course-progress-chapter-complete" method="POST"><input type="hidden" name="action" value="hfh_chapter_complete" /><input type="hidden" name="value" value="' . !$isComplete . '" /><input type="hidden" name="post" value="' . $post->ID . '" /><button type="submit">' . ($isComplete ? __('Mark Chapter as Incomplete', 'pressbooks-hfh') : __('Mark Chapter as Complete', 'pressbooks-hfh')) . '</button></form>';
             return $content . $form;
         }
         return $content;

@@ -9,6 +9,7 @@ License: GPLv2
 Text-Domain: pressbooks-hfh
 */
 
+use Hfh\Pressbooks\AdminMenu;
 use HfH\Pressbooks\BookPostsPassword;
 use HfH\Pressbooks\ChapterCategories;
 use HfH\Pressbooks\CourseProgress;
@@ -36,6 +37,8 @@ define('HFH_PLUGIN_DIR', plugin_dir_path(__FILE__));
 //require_once 'components/user.php';
 require_once 'components/quicktags.php';
 require_once 'components/h5p.php';
+require_once 'components/admin_menu.php';
+AdminMenu::get_instance();
 require_once 'components/book_posts_password.php';
 BookPostsPassword::get_instance();
 require_once 'components/chapter_categories.php';
