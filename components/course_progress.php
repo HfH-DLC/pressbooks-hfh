@@ -44,10 +44,6 @@ class CourseProgress
         }
         add_action('wp_enqueue_scripts',  array($this, 'wp_enqueue_scripts'));
         add_filter('query_vars', array($this, 'query_vars'));
-        if (!is_main_site()) {
-            add_filter('rewrite_rules_array', array($this, 'add_rewrite_rule'));
-        }
-        add_filter('init', array($this, 'flushRules'));
         add_action('template_include', array($this, 'template_include'));
         add_filter('the_content', array($this, 'add_chapter_complete_button'), 14); //pressbooks adds footnotes etc. on priority 13
         add_action('wp_ajax_hfh_chapter_complete', array($this, 'hfh_chapter_complete'));
@@ -65,7 +61,7 @@ class CourseProgress
             'hfh-course-progress-ajax',
             'phpVars',
             array(
-                'progressURL' => home_url('progress'),
+                'progressURL' => add_query_arg(self::PAGE_QUERY_VAR, self::PROGRESS_PAGE_NAME, home_url()),
                 'ajaxURL' => admin_url('admin-ajax.php'),
                 'ajaxNonce'    => wp_create_nonce(self::NONCE_ACTION),
                 'setCompleteText' => __('Mark Chapter as Complete', 'pressbooks-hfh'),
@@ -75,19 +71,6 @@ class CourseProgress
             )
         );
     }
-    function flushRules()
-    {
-        global $wp_rewrite;
-        $wp_rewrite->flush_rules();
-    }
-
-    function add_rewrite_rule($rules)
-    {
-        $newrules = array();
-        $newrules['^progress$'] = 'index.php?' . self::PAGE_QUERY_VAR . '=' . self::PROGRESS_PAGE_NAME;
-        return $newrules + $rules;
-    }
-
 
     public function query_vars($query_vars)
     {
