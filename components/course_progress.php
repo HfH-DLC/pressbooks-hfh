@@ -175,7 +175,7 @@ class CourseProgress
                                 <svg class="hfh-chapter__progress-indicator" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" stroke-width="1">
                                     <circle cx="10" cy="10" r="7.5" />
                                 </svg>
-                            <? endif; ?>
+                            <?php endif; ?>
                             </div>
                         </td>
                     </tr>
