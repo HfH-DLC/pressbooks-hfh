@@ -2,17 +2,15 @@ jQuery(document).ready(function ($) {
   $("#nav-primary-menu li:eq(1)").after(
     `<li><a href='${phpVars.progressURL}'>${phpVars.progressLinkText}</a></li>`
   );
-  const completed =
-    '<svg class="hfh-chapter__progress-indicator hfh-chapter__progress-indicator--complete" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg>';
-  const incompleted =
-    '<svg class="hfh-chapter__progress-indicator" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" stroke-width="1"><circle cx="10" cy="10" r="7.5" /></svg>';
-  $("#main #content .toc>li, #main #content .toc__chapters>li").each(
-    function () {
-      const id = $(this).attr("id").split("-").pop();
-      const icon = is_completed(phpVars.progress, id) ? completed : incompleted;
-      $(this).find(">.toc__title__container").prepend(icon);
-    }
-  );
+
+  $(
+    "#main #content .toc>li, #main #content .toc__chapters>li, #page nav.reading-header__inside .toc li"
+  ).each(function () {
+    const id = $(this).attr("id").split("-").pop();
+    const $icon = $(getProgressIcon(isCompleted(phpVars.progress, id)));
+    $icon.attr("id", getIconElementId(id));
+    $(this).find(">.toc__title__container").prepend($icon);
+  });
 
   $("#hfh-course-progress-chapter-complete").submit(function (e) {
     e.preventDefault(e);
@@ -34,17 +32,20 @@ jQuery(document).ready(function ($) {
           $("#hfh-course-progress-chapter-complete input[name=value]").val(
             !response.data.completed
           );
-          console.log(
-            "Toggle text to:",
-            response.data.completed
-              ? phpVars.setIncompleteText
-              : phpVars.setCompleteText
-          );
           $("#hfh-course-progress-chapter-complete button[type=submit]").text(
             response.data.completed
               ? phpVars.setIncompleteText
               : phpVars.setCompleteText
           );
+          const progress = response.data.progress;
+          progress.parts.forEach((part) => {
+            if (part.ID) {
+              updateProgressIcon(part.ID, isCompleted(progress, part.ID));
+            }
+            part.completion.chapters.forEach((chapter) => {
+              updateProgressIcon(chapter.ID, isCompleted(progress, chapter.ID));
+            });
+          });
         } else {
           console.log("error");
         }
@@ -55,7 +56,28 @@ jQuery(document).ready(function ($) {
     });
   });
 
-  function is_completed(progress, id) {
+  function updateProgressIcon(id, complete) {
+    const elementId = getIconElementId(id);
+    $indicator = $(`#${elementId}`);
+    $newIndicator = $(getProgressIcon(complete));
+    $newIndicator.attr("id", elementId);
+    $indicator.replaceWith($newIndicator);
+  }
+
+  function getIconElementId(id) {
+    return `hfh-progress-${id}`;
+  }
+
+  function getProgressIcon(isCompleted) {
+    const completed =
+      '<svg class="hfh-chapter__progress-indicator hfh-chapter__progress-indicator--complete" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg>';
+    const incompleted =
+      '<svg class="hfh-chapter__progress-indicator" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" stroke-width="1"><circle cx="10" cy="10" r="7.5" /></svg>';
+
+    return isCompleted ? completed : incompleted;
+  }
+
+  function isCompleted(progress, id) {
     const part = progress.parts.find((part) => part.ID == id);
     if (part) {
       return part.completion.total == part.completion.complete;

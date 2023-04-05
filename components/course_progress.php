@@ -237,7 +237,7 @@ class CourseProgress
                 $post_id = intval($_POST['post']);
                 $value = rest_sanitize_boolean($_POST['value']);
                 $value = $this->set_chapter_complete($post_id, $value);
-                wp_send_json_success(array('completed' => $value));
+                wp_send_json_success(array('completed' => $value, 'progress' => $this->get_progress()));
             } else {
                 wp_send_json_error();
             }
