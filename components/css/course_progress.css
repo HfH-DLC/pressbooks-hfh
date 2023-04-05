@@ -92,3 +92,20 @@
 #hfh-course-progress-chapter-complete > button {
   cursor: pointer;
 }
+
+#main .toc .toc__title__container,
+#page nav.reading-header__inside .toc .toc__title__container {
+  display: flex;
+  align-items: center;
+}
+
+#main .toc .toc__title__container > span,
+#page nav.reading-header__inside .toc .toc__title__container > span {
+  display: flex;
+  align-items: center;
+  margin-right: auto;
+}
+
+.toc__title__container .hfh-chapter__progress-indicator {
+  margin-right: 0.5rem;
+}
