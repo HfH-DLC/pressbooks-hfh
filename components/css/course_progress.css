@@ -102,10 +102,10 @@
 #main .toc .toc__title__container > span,
 #page nav.reading-header__inside .toc .toc__title__container > span {
   display: flex;
-  align-items: center;
   margin-right: auto;
 }
 
 .toc__title__container .hfh-chapter__progress-indicator {
   margin-right: 0.5rem;
+  height: 1.6875rem;
 }
