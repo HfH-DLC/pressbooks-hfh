@@ -32,11 +32,13 @@ jQuery(document).ready(function ($) {
           $("#hfh-course-progress-chapter-complete input[name=value]").val(
             !response.data.completed
           );
-          $("#hfh-course-progress-chapter-complete button[type=submit]").text(
-            response.data.completed
-              ? phpVars.setIncompleteText
-              : phpVars.setCompleteText
-          );
+          $("#hfh-course-progress-chapter-complete button[type=submit]")
+            .text(
+              response.data.completed
+                ? phpVars.setIncompleteText
+                : phpVars.setCompleteText
+            )
+            .toggleClass("hfh-button--primary hfh-button--secondary");
           const progress = response.data.progress;
           progress.parts.forEach((part) => {
             if (part.ID) {
