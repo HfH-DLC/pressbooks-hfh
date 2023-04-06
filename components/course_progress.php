@@ -207,7 +207,7 @@ class CourseProgress
         global $post;
         if ($this->show_complete_button($post)) {
             $isComplete = $this->is_chapter_complete($post->ID);
-            $form = '<form id="hfh-course-progress-chapter-complete" method="POST"><input type="hidden" name="action" value="hfh_chapter_complete" /><input type="hidden" name="value" value="' . !$isComplete . '" /><input type="hidden" name="post" value="' . $post->ID . '" /><button type="submit">' . ($isComplete ? __('Mark Chapter as Incomplete', 'pressbooks-hfh') : __('Mark Chapter as Complete', 'pressbooks-hfh')) . '</button></form>';
+            $form = '<form id="hfh-course-progress-chapter-complete" method="POST"><input type="hidden" name="action" value="hfh_chapter_complete" /><input type="hidden" name="value" value="' . !$isComplete . '" /><input type="hidden" name="post" value="' . $post->ID . '" /><button type="submit" class="hfh-button hfh-button--icon-arrow hfh-button--animated ' . ($isComplete ? 'hfh-button--secondary' : 'hfh-button--primary') . '">' . ($isComplete ? __('Mark Chapter as Incomplete', 'pressbooks-hfh') : __('Mark Chapter as Complete', 'pressbooks-hfh')) . '</button></form>';
             return $content . $form;
         }
         return $content;
