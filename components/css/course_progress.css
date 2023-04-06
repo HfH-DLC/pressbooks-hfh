@@ -96,7 +96,7 @@
 #main .toc .toc__title__container,
 #page nav.reading-header__inside .toc .toc__title__container {
   display: flex;
-  align-items: center;
+  align-items: stretch;
 }
 
 #main .toc .toc__title__container > span,
