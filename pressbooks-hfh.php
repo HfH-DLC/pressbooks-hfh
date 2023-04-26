@@ -13,6 +13,7 @@ use Hfh\Pressbooks\AdminMenu;
 use HfH\Pressbooks\BookPostsPassword;
 use HfH\Pressbooks\ChapterCategories;
 use HfH\Pressbooks\CourseProgress;
+use HfH\Pressbooks\Shortcodes;
 
 if (!defined('ABSPATH')) {
 	return;
@@ -34,7 +35,6 @@ define('HFH_PLUGIN_DIR', plugin_dir_path(__FILE__));
 // add_action( 'wp_login', '_pb_session_kill' );
 
 
-//require_once 'components/user.php';
 require_once 'components/quicktags.php';
 require_once 'components/h5p.php';
 require_once 'components/admin_menu.php';
@@ -43,9 +43,10 @@ require_once 'components/book_posts_password.php';
 BookPostsPassword::get_instance();
 require_once 'components/chapter_categories.php';
 ChapterCategories::get_instance();
-
 require_once 'components/course_progress.php';
 CourseProgress::get_instance();
+require_once 'components/shortcodes.php';
+Shortcodes::get_instance();
 
 /**
  * Remove references to pressbooks.com..

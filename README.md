@@ -38,3 +38,14 @@ Using the [Shibboleth plugin](https://wordpress.org/plugins/shibboleth/), users 
 For this feature to work properly, a small modification needs to be made to the source code of the Shibboleth plugin.
 
 Implemented in `components/user.php`.
+
+### Custom Shortcodes
+
+This feature adds the two shortcodes `hfh_parts` and `hfh_chapters`. They provide a linked visualization of the parts and chapters of the book.
+The intent is that they are put on top of the page with `hfh_parts` before `hfh_chapters` if both are used.
+
+Implemented in `component/user.php`.
+
+## Usage
+
+Sass styles can be compiled with `sass components/scss:components/css --no-source-map`.
