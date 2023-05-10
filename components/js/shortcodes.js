@@ -1,4 +1,4 @@
-window.addEventListener("DOMContentLoaded", (event) => {
+window.addEventListener("DOMContentLoaded", () => {
   const sectionHeaders = document.querySelectorAll(
     ".chapter > .before-content-connection-line ~ h2"
   );
@@ -19,12 +19,14 @@ window.addEventListener("DOMContentLoaded", (event) => {
 
 let resizeDebounce;
 
-window.addEventListener("resize", (event) => {
+const resizeObserver = new ResizeObserver(() => {
   clearTimeout(resizeDebounce);
   resizeDebounce = setTimeout(function () {
     resizeLines();
   }, 20);
 });
+
+resizeObserver.observe(document.querySelector(".chapter"));
 
 const resizeLines = () => {
   const sectionHeaders = document.querySelectorAll(".chapter > h2");
