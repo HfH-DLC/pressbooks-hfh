@@ -63,8 +63,9 @@ class Shortcodes
             }
         }
 
-        //This should be returned instead, but using output buffers produced issues with empty paragraphs being inserted.
+        ob_start();
         include('templates/parts_shortcode.php');
+        return ob_get_clean();
     }
 
     public function chapters_shortcode()
@@ -98,7 +99,8 @@ class Shortcodes
             $chapters[] = $current_part["chapters"][$current_index + 2];
         }
 
-        //This should be returned instead, but using output buffers produced issues with empty paragraphs being inserted.
+        ob_start();
         include('templates/chapters_shortcode.php');
+        return ob_get_clean();
     }
 }
