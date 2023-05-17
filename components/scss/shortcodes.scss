@@ -12,9 +12,13 @@ body:not(.home) #page #main #content {
 }
 
 #main .site-content {
+  header + .phase-bar {
+    margin-top: 0;
+  }
   .phase-bar {
     padding-right: 1.675rem;
     margin-left: -0.325rem;
+    margin-block: 3rem;
 
     ul {
       display: flex;
@@ -169,6 +173,10 @@ body:not(.home) #page #main #content {
 ** Timeline
 **/
   .timeline-wrapper {
+    p:empty {
+      display: none;
+    }
+
     .timeline__navigation {
       width: 2rem;
       font-size: 3rem;
