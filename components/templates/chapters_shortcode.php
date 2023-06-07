@@ -1,3 +1,8 @@
+<style>
+    html:root {
+        --c-timeline-active: <?= $active_color ?>;
+    }
+</style>
 <div class="timeline-wrapper">
     <div class="timeline">
         <div class="steps">

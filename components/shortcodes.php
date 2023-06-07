@@ -68,11 +68,17 @@ class Shortcodes
         return ob_get_clean();
     }
 
-    public function chapters_shortcode()
+    public function chapters_shortcode($atts)
     {
         wp_enqueue_script('pressbooks_hfh_shortcodes_script');
         wp_enqueue_style('pressbooks_hfh_shortcodes_style');
 
+        $defaults = array(
+            'color' => 'var(--c-thunderbird-red)'
+        );
+        $atts = shortcode_atts($defaults, $atts, 'hfh_chapter');
+        //used in shortcode template
+        $active_color = $atts['color'];
         $book_structure = pb_get_book_structure();
         $parts = $book_structure['part'];
         $current_id = get_the_ID();

@@ -2,6 +2,7 @@
   --c-thunderbird-red: #be1925;
   --c-gray-dark: #767676;
   --c-black: #000;
+  --c-timeline-active: var(--c-thunderbird-red);
 }
 
 body:not(.home) #page #main #content {
@@ -122,7 +123,7 @@ body:not(.home) #page #main #content {
   margin-top: 0;
 }
 #main .site-content section.chapter .timeline-wrapper ~ h2::before {
-  --c-circle: var(--c-thunderbird-red);
+  --c-circle: var(--c-timeline-active);
   content: "";
   display: block;
   width: 1.0625rem;
@@ -144,14 +145,14 @@ body:not(.home) #page #main #content {
 }
 #main .site-content .content-connection-line {
   margin-top: 0.75rem;
-  border-left: 1px dashed var(--c-thunderbird-red);
+  border-left: 1px dashed var(--c-timeline-active);
   min-height: 3rem;
   position: absolute;
   left: 8px;
 }
 #main .site-content .before-content-connection-line {
   height: 3rem;
-  border-left: 1px dashed var(--c-thunderbird-red);
+  border-left: 1px dashed var(--c-timeline-active);
   margin-left: 1.5rem;
   display: none;
 }
@@ -168,6 +169,9 @@ body:not(.home) #page #main #content {
 #main .site-content .timeline-wrapper .timeline__navigation > a:hover {
   text-decoration: none;
 }
+#main .site-content .timeline-wrapper .timeline__navigation svg {
+  color: var(--c-timeline-active);
+}
 #main .site-content .timeline-wrapper .timeline__navigation.timeline__navigation--previous svg {
   transform: rotate(180deg);
 }
@@ -183,9 +187,9 @@ body:not(.home) #page #main #content {
   --c-step: var(--c-gray-dark);
 }
 #main .site-content .timeline [data-active="1"] {
-  --c-step: var(--c-thunderbird-red);
-  --c-line: var(--c-thunderbird-red);
-  --c-circle: var(--c-thunderbird-red);
+  --c-step: var(--c-timeline-active);
+  --c-line: var(--c-timeline-active);
+  --c-circle: var(--c-timeline-active);
 }
 #main .site-content .timeline .steps {
   display: grid;
@@ -225,7 +229,7 @@ body:not(.home) #page #main #content {
   cursor: pointer;
 }
 #main .site-content .timeline .step__label:not(:disabled):hover {
-  background-color: var(--c-thunderbird-red);
+  background-color: var(--c-timeline-active);
 }
 #main .site-content .timeline .step__label:not(:disabled):hover, #main .site-content .timeline .step__label:not(:disabled):focus, #main .site-content .timeline .step__label:not(:disabled):active, #main .site-content .timeline .step__label:not(:disabled):visited {
   color: white;

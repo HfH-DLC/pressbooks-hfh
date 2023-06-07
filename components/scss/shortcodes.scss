@@ -2,6 +2,7 @@
   --c-thunderbird-red: #be1925;
   --c-gray-dark: #767676;
   --c-black: #000;
+  --c-timeline-active: var(--c-thunderbird-red);
 }
 
 body:not(.home) #page #main #content {
@@ -126,7 +127,7 @@ body:not(.home) #page #main #content {
   }
 
   section.chapter .timeline-wrapper ~ h2::before {
-    --c-circle: var(--c-thunderbird-red);
+    --c-timeline-circle: var(--c-timeline-active);
     content: "";
     display: block;
     width: 1.0625rem;
@@ -135,7 +136,7 @@ body:not(.home) #page #main #content {
     margin-top: 0.75rem;
     margin-bottom: 1rem;
     border-radius: 100%;
-    background-color: var(--c-circle);
+    background-color: var(--c-timeline-circle);
     transition: transform 0.2s;
     border: 1px solid transparent;
     z-index: 1;
@@ -153,7 +154,7 @@ body:not(.home) #page #main #content {
 
   .content-connection-line {
     margin-top: 0.75rem;
-    border-left: 1px dashed var(--c-thunderbird-red);
+    border-left: 1px dashed var(--c-timeline-active);
     min-height: 3rem;
     position: absolute;
     left: 8px;
@@ -161,7 +162,7 @@ body:not(.home) #page #main #content {
 
   .before-content-connection-line {
     height: 3rem;
-    border-left: 1px dashed var(--c-thunderbird-red);
+    border-left: 1px dashed var(--c-timeline-active);
     margin-left: 1.5rem;
     & + h2 {
       margin-top: -0.75rem;
@@ -184,6 +185,10 @@ body:not(.home) #page #main #content {
         text-decoration: none;
       }
 
+      svg {
+        color: var(--c-timeline-active);
+      }
+
       &.timeline__navigation--previous {
         svg {
           transform: rotate(180deg);
@@ -203,14 +208,14 @@ body:not(.home) #page #main #content {
     flex-grow: 1;
     margin-top: 3rem;
 
-    --c-circle: var(--c-black);
-    --c-line: var(--c-black);
-    --c-step: var(--c-gray-dark);
+    --c-timeline-circle: var(--c-black);
+    -c-timeline-line: var(--c-black);
+    -c-timeline-step: var(--c-gray-dark);
 
     [data-active="1"] {
-      --c-step: var(--c-thunderbird-red);
-      --c-line: var(--c-thunderbird-red);
-      --c-circle: var(--c-thunderbird-red);
+      -c-timeline-step: var(--c-timeline-active);
+      -c-timeline-line: var(--c-timeline-active);
+      --c-timeline-circle: var(--c-timeline-active);
     }
 
     .steps {
@@ -239,7 +244,7 @@ body:not(.home) #page #main #content {
     .step__label {
       display: block;
       padding: 1rem;
-      background: var(--c-step);
+      background: var(-c-timeline-step);
       border: 1px solid transparent;
       color: white;
       font-size: 0.875rem;
@@ -253,7 +258,7 @@ body:not(.home) #page #main #content {
         cursor: pointer;
 
         &:hover {
-          background-color: var(--c-thunderbird-red);
+          background-color: var(--c-timeline-active);
         }
 
         &:hover,
@@ -285,7 +290,7 @@ body:not(.home) #page #main #content {
 
     .connection-line {
       margin-left: 1.5rem;
-      border-left: 1px dashed var(--c-line);
+      border-left: 1px dashed var(-c-timeline-line);
       min-height: 3rem;
       flex: 1;
     }
@@ -301,7 +306,7 @@ body:not(.home) #page #main #content {
     width: 1.0625rem;
     height: 1.0625rem;
     border-radius: 100%;
-    background-color: var(--c-circle);
+    background-color: var(--c-timeline-circle);
     transition: transform 0.2s;
     flex-shrink: 0;
     border: 1px solid transparent;
