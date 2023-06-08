@@ -42,11 +42,17 @@ class Shortcodes
         wp_register_script('pressbooks_hfh_shortcodes_script', HFH_PLUGIN_URL . 'components/js/shortcodes.js', array("jquery"));
     }
 
-    public function parts_shortcode()
+    public function parts_shortcode($atts)
     {
         wp_enqueue_script('pressbooks_hfh_shortcodes_script');
         wp_enqueue_style('pressbooks_hfh_shortcodes_style');
 
+        $defaults = array(
+            'color' => null
+        );
+        $atts = shortcode_atts($defaults, $atts, 'hfh_chapter');
+        //used in shortcode template
+        $parts_color =  sanitize_hex_color($atts['color']);
         $book_structure = pb_get_book_structure();
         $parts = $book_structure['part'];
         $current_id = get_the_ID();
@@ -74,11 +80,11 @@ class Shortcodes
         wp_enqueue_style('pressbooks_hfh_shortcodes_style');
 
         $defaults = array(
-            'color' => 'var(--c-thunderbird-red)'
+            'color' => null
         );
         $atts = shortcode_atts($defaults, $atts, 'hfh_chapter');
         //used in shortcode template
-        $active_color = $atts['color'];
+        $chapters_color =  sanitize_hex_color($atts['color']);
         $book_structure = pb_get_book_structure();
         $parts = $book_structure['part'];
         $current_id = get_the_ID();

@@ -1,8 +1,10 @@
-<style>
-    html:root {
-        --c-timeline-active: <?= $active_color ?>;
-    }
-</style>
+<?php if ($chapters_color) : ?>
+    <style>
+        html:root {
+            --c-chapters-color: <?= $chapters_color ?>;
+        }
+    </style>
+<?php endif; ?>
 <div class="timeline-wrapper">
     <div class="timeline">
         <div class="steps">

@@ -2,7 +2,8 @@
   --c-thunderbird-red: #be1925;
   --c-gray-dark: #767676;
   --c-black: #000;
-  --c-timeline-active: var(--c-thunderbird-red);
+  --c-chapters-color: var(--c-thunderbird-red);
+  --c-parts-color: var(--c-thunderbird-red);
 }
 
 body:not(.home) #page #main #content {
@@ -40,7 +41,7 @@ body:not(.home) #page #main #content {
           &:hover {
             text-decoration: none;
             .phase {
-              --c-arrow: var(--c-thunderbird-red);
+              --c-arrow: var(--c-parts-color);
             }
           }
         }
@@ -70,7 +71,7 @@ body:not(.home) #page #main #content {
     }
 
     &.phase--current {
-      --c-arrow: var(--c-thunderbird-red);
+      --c-arrow: var(--c-parts-color);
     }
 
     .phase__text {
@@ -127,7 +128,7 @@ body:not(.home) #page #main #content {
   }
 
   section.chapter .timeline-wrapper ~ h2::before {
-    --c-timeline-circle: var(--c-timeline-active);
+    --c-chapters-circle: var(--c-chapters-color);
     content: "";
     display: block;
     width: 1.0625rem;
@@ -136,7 +137,7 @@ body:not(.home) #page #main #content {
     margin-top: 0.75rem;
     margin-bottom: 1rem;
     border-radius: 100%;
-    background-color: var(--c-timeline-circle);
+    background-color: var(--c-chapters-circle);
     transition: transform 0.2s;
     border: 1px solid transparent;
     z-index: 1;
@@ -154,7 +155,7 @@ body:not(.home) #page #main #content {
 
   .content-connection-line {
     margin-top: 0.75rem;
-    border-left: 1px dashed var(--c-timeline-active);
+    border-left: 1px dashed var(--c-chapters-color);
     min-height: 3rem;
     position: absolute;
     left: 8px;
@@ -162,7 +163,7 @@ body:not(.home) #page #main #content {
 
   .before-content-connection-line {
     height: 3rem;
-    border-left: 1px dashed var(--c-timeline-active);
+    border-left: 1px dashed var(--c-chapters-color);
     margin-left: 1.5rem;
     & + h2 {
       margin-top: -0.75rem;
@@ -186,7 +187,7 @@ body:not(.home) #page #main #content {
       }
 
       svg {
-        color: var(--c-timeline-active);
+        color: var(--c-chapters-color);
       }
 
       &.timeline__navigation--previous {
@@ -208,14 +209,14 @@ body:not(.home) #page #main #content {
     flex-grow: 1;
     margin-top: 3rem;
 
-    --c-timeline-circle: var(--c-black);
-    -c-timeline-line: var(--c-black);
-    -c-timeline-step: var(--c-gray-dark);
+    --c-chapters-step: var(--c-gray-dark);
+    --c-chapters-circle: var(--c-black);
+    --c-chapters-line: var(--c-black);
 
     [data-active="1"] {
-      -c-timeline-step: var(--c-timeline-active);
-      -c-timeline-line: var(--c-timeline-active);
-      --c-timeline-circle: var(--c-timeline-active);
+      --c-chapters-step: var(--c-chapters-color);
+      --c-chapters-line: var(--c-chapters-color);
+      --c-chapters-circle: var(--c-chapters-color);
     }
 
     .steps {
@@ -244,7 +245,7 @@ body:not(.home) #page #main #content {
     .step__label {
       display: block;
       padding: 1rem;
-      background: var(-c-timeline-step);
+      background: var(--c-chapters-step);
       border: 1px solid transparent;
       color: white;
       font-size: 0.875rem;
@@ -258,7 +259,7 @@ body:not(.home) #page #main #content {
         cursor: pointer;
 
         &:hover {
-          background-color: var(--c-timeline-active);
+          background-color: var(--c-chapters-color);
         }
 
         &:hover,
@@ -290,7 +291,7 @@ body:not(.home) #page #main #content {
 
     .connection-line {
       margin-left: 1.5rem;
-      border-left: 1px dashed var(-c-timeline-line);
+      border-left: 1px dashed var(--c-chapters-line);
       min-height: 3rem;
       flex: 1;
     }
@@ -306,7 +307,7 @@ body:not(.home) #page #main #content {
     width: 1.0625rem;
     height: 1.0625rem;
     border-radius: 100%;
-    background-color: var(--c-timeline-circle);
+    background-color: var(--c-chapters-circle);
     transition: transform 0.2s;
     flex-shrink: 0;
     border: 1px solid transparent;

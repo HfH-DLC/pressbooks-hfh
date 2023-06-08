@@ -1,3 +1,10 @@
+<?php if ($parts_color) : ?>
+    <style>
+        html:root {
+            --c-parts-color: <?= $parts_color ?>;
+        }
+    </style>
+<?php endif; ?>
 <div class="phase-bar">
     <ul>
         <?php
