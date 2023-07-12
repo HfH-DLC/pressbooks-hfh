@@ -44,7 +44,13 @@ Implemented in `components/user.php`.
 This feature adds the two shortcodes `hfh_parts` and `hfh_chapters`. They provide a linked visualization of the parts and chapters of the book.
 The intent is that they are put on top of the page with `hfh_parts` before `hfh_chapters` if both are used.
 
-Implemented in `component/user.php`.
+Implemented in `components/shortcodes.php`.
+
+### H5P Autosave Default Settings
+
+If the h5p plugin is network activated when a new site is created, the h5p autosaving feature is enabled and the save frequency set to 3 seconds.
+
+Implemented in `components/h5p.php`.
 
 ## Usage
 

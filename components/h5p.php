@@ -41,3 +41,16 @@ function hfh_enqueue_h5p_fix()
 {
     wp_enqueue_style('hfh-h5p-fix',  HFH_PLUGIN_URL . 'components/css/h5pfix.css');
 }
+
+/**
+ * Automatically enables H5P autosaving for a new site
+ */
+function hfh_h5p_autosave_settings($new_site)
+{
+    if (is_plugin_active_for_network('h5p/h5p.php')) {
+        update_blog_option($new_site->blog_id, 'h5p_save_content_state', 1);
+        update_blog_option($new_site->blog_id, 'h5p_save_content_frequency', 3);
+    }
+}
+
+add_action('wp_initialize_site', 'hfh_h5p_autosave_settings');
