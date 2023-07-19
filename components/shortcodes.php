@@ -34,18 +34,21 @@ class Shortcodes
     {
         add_shortcode('hfh_parts', array($this, 'parts_shortcode'));
         add_shortcode('hfh_chapters', array($this, 'chapters_shortcode'));
+        add_shortcode('hfh_confetti', array($this, 'confetti_shortcode'));
     }
 
     public function enqueue()
     {
-        wp_register_style('pressbooks_hfh_shortcodes_style', HFH_PLUGIN_URL . 'components/css/shortcodes.css');
-        wp_register_script('pressbooks_hfh_shortcodes_script', HFH_PLUGIN_URL . 'components/js/shortcodes.js', array("jquery"));
+        wp_register_style('pressbooks_hfh_chapter_parts_shortcodes_style', HFH_PLUGIN_URL . 'components/css/chapter_parts_shortcodes.css');
+        wp_register_script('pressbooks_hfh_chapter_parts_shortcode_script', HFH_PLUGIN_URL . 'components/js/chapter_parts_shortcode.js', array("jquery"));
+        wp_register_script('pressbooks_hfh_confetti_third_party', 'https://cdn.jsdelivr.net/npm/tsparticles@2.11.0/tsparticles.bundle.min.js');
+        wp_register_script('pressbooks_hfh_confetti_shortcode_script', HFH_PLUGIN_URL . 'components/js/confetti_shortcode.js', array("pressbooks_hfh_confetti_third_party"));
     }
 
     public function parts_shortcode($atts)
     {
-        wp_enqueue_script('pressbooks_hfh_shortcodes_script');
-        wp_enqueue_style('pressbooks_hfh_shortcodes_style');
+        wp_enqueue_script('pressbooks_hfh_chapter_shortcode_script');
+        wp_enqueue_style('pressbooks_hfh_chapter_parts_shortcodes_style');
 
         $defaults = array(
             'color' => null
@@ -76,8 +79,8 @@ class Shortcodes
 
     public function chapters_shortcode($atts)
     {
-        wp_enqueue_script('pressbooks_hfh_shortcodes_script');
-        wp_enqueue_style('pressbooks_hfh_shortcodes_style');
+        wp_enqueue_script('pressbooks_hfh_chapter_shortcode_script');
+        wp_enqueue_style('pressbooks_hfh_chapter_parts_shortcodes_style');
 
         $defaults = array(
             'color' => null
@@ -114,5 +117,10 @@ class Shortcodes
         ob_start();
         include('templates/chapters_shortcode.php');
         return ob_get_clean();
+    }
+
+    public function confetti_shortcode($atts)
+    {
+        wp_enqueue_script('pressbooks_hfh_confetti_shortcode_script');
     }
 }
