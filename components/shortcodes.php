@@ -121,6 +121,16 @@ class Shortcodes
 
     public function confetti_shortcode($atts)
     {
+        $defaults = array(
+            'colors' => '#be1925'
+        );
+        $attributes = shortcode_atts($defaults, $atts, 'hfh_chapter');
+
+        $colors_no_whitespaces = preg_replace('/\s*,\s*/', ',', sanitize_text_field($attributes['colors']));
+        $colors = explode(",", $colors_no_whitespaces);
+
+
         wp_enqueue_script('pressbooks_hfh_confetti_shortcode_script');
+        wp_add_inline_script('pressbooks_hfh_confetti_shortcode_script', 'const CONFETTI_COLORS = ' . json_encode($colors), 'before');
     }
 }

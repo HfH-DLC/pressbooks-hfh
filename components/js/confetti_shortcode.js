@@ -49,7 +49,7 @@
     ],
     particles: {
       color: {
-        value: ["#1E00FF", "#FF0061", "#E1FF00", "#00FF9E"],
+        value: CONFETTI_COLORS,
       },
       move: {
         decay: 0.05,
