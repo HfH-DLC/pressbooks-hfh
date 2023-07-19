@@ -47,7 +47,7 @@ class Shortcodes
 
     public function parts_shortcode($atts)
     {
-        wp_enqueue_script('pressbooks_hfh_chapter_shortcode_script');
+        wp_enqueue_script('pressbooks_hfh_chapter_parts_shortcode_script');
         wp_enqueue_style('pressbooks_hfh_chapter_parts_shortcodes_style');
 
         $defaults = array(
@@ -79,7 +79,7 @@ class Shortcodes
 
     public function chapters_shortcode($atts)
     {
-        wp_enqueue_script('pressbooks_hfh_chapter_shortcode_script');
+        wp_enqueue_script('pressbooks_hfh_chapter_parts_shortcode_script');
         wp_enqueue_style('pressbooks_hfh_chapter_parts_shortcodes_style');
 
         $defaults = array(
