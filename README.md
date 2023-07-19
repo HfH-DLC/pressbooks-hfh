@@ -41,8 +41,9 @@ Implemented in `components/user.php`.
 
 ### Custom Shortcodes
 
-This feature adds the two shortcodes `hfh_parts` and `hfh_chapters`. They provide a linked visualization of the parts and chapters of the book.
-The intent is that they are put on top of the page with `hfh_parts` before `hfh_chapters` if both are used.
+- `hfh_parts` and `hfh_chapters` provide a linked visualization of the parts and chapters of the book. The intent is that they are put on top of the page with `hfh_parts` before `hfh_chapters` if both are used.
+
+- `hfh_confetti` adds a burst of confetti when the page is loaded.
 
 Implemented in `components/shortcodes.php`.
 
