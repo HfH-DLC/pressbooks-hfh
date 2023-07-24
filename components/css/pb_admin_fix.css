@@ -1,4 +1,4 @@
 /* Prevent content overlapping with footer on long pages */
-#wpcontent {
-  margin-bottom: 65px;
+:not(.post-type-bp3d-model-viewer) #wpbody-content {
+  padding-bottom: 65px !important;
 }
