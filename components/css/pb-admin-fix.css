@@ -1,0 +1,4 @@
+/* Prevent content overlapping with footer on long pages */
+#wpcontent {
+  margin-bottom: 65px;
+}

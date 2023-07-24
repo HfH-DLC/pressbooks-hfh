@@ -94,6 +94,16 @@ if (is_admin() === false) {
 	add_filter('show_admin_bar', '__return_false');
 }
 
+/**
+ * Add temporary PB admin style fix until update
+ */
+function hfh_pb_admin_fix()
+{
+	wp_enqueue_style('hfh_pb_admin_fix',  HFH_PLUGIN_URL . '/components/css/pb_admin_fix.css');
+}
+
+add_action('admin_enqueue_scripts', 'hfh_pb_admin_fix');
+
 // /**
 //  * Replace default cover url.
 //  *
