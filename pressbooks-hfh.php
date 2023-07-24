@@ -2,7 +2,7 @@
 /*
 Plugin Name: Pressbooks HfH
 Description: HfH additions for Pressbooks
-Version: 1.0.8
+Version: 1.0.9
 Author: Sarah Frederickx, Stephan Müller, Lukas Kaiser, Matthias Nötzli
 Copyright: © 2017, ETH Zurich, D-HEST, Stephan J. Müller, Lukas Kaiser, © 2022, HfH, DLC, Matthias Nötzli
 License: GPLv2
