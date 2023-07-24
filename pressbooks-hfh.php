@@ -95,7 +95,7 @@ if (is_admin() === false) {
 }
 
 /**
- * Add temporary PB admin style fix until update
+ * Add PB admin style fix for overlapping problem introduced by 3D Viewer Plugin
  */
 function hfh_pb_admin_fix()
 {
