@@ -53,6 +53,13 @@ If the h5p plugin is network activated when a new site is created, the h5p autos
 
 Implemented in `components/h5p.php`.
 
+### H5P Details iFrame Resize Fix
+
+If a h5p is inside a closed details element, the iframe's height will not be set correctly in Safari.
+We fix this be calling a window resize event whenver a details element is toggled.
+
+Implemented in `components/js/details_h5p_iframe_resize.js`
+
 ## Usage
 
 Sass styles can be compiled with `sass components/scss:components/css --no-source-map`.
