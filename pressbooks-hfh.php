@@ -104,6 +104,18 @@ function hfh_pb_admin_fix()
 
 add_action('admin_enqueue_scripts', 'hfh_pb_admin_fix');
 
+/**
+ * Add details h5p iframe resize fix
+ */
+function hfh_details_h5p_iframe_resize_fix()
+{
+	wp_enqueue_script(
+		'hfh_details_h5p_iframe_resize',
+		HFH_PLUGIN_URL . 'components/js/details_h5p_iframe_resize.js',
+	);
+}
+add_action('admin_enqueue_scripts', 'hfh_details_h5p_iframe_resize_fix');
+
 // /**
 //  * Replace default cover url.
 //  *
