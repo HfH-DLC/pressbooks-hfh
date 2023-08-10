@@ -8,7 +8,7 @@ use HfH\Pressbooks\GamipressNotificationsH5PFix;
 class AdminMenu
 {
     const NONCE = '_hfh_pressbooks_wpnonce';
-    const SLUG = 'hfh';
+    const SLUG = 'hfh-pressbooks';
     const ACTION = 'hfh_pressbooks_save_settings';
 
     private static $instance = false;
@@ -32,8 +32,8 @@ class AdminMenu
     public function add_menu()
     {
         add_menu_page("HfH Pressbooks", 'HfH Pressbooks', 'manage_options', self::SLUG);
-        add_submenu_page('hfh', 'Übersicht', 'Übersicht', 'manage_options', self::SLUG, array($this, 'display_overview'));
-        add_submenu_page('hfh', 'Einstellungen', 'Einstellungen', 'manage_options', self::SLUG . '-settings', array($this, 'display_settings'));
+        add_submenu_page(self::SLUG, 'Übersicht', 'Übersicht', 'manage_options', self::SLUG, array($this, 'display_overview'));
+        add_submenu_page(self::SLUG, 'Einstellungen', 'Einstellungen', 'manage_options', self::SLUG . '-settings', array($this, 'display_settings'));
         add_option(CourseProgress::ACTIVE_OPTION, false);
         add_option(GamipressNotificationsH5PFix::ACTIVE_OPTION, false);
     }
