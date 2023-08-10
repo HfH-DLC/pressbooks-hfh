@@ -72,7 +72,7 @@ class AdminMenu
                 Unter <a href="<?= admin_url('admin.php?page=hfh-settings') ?>">HfH Pressbooks > Einstellungen</a> kann ein Fix dafür aktiviert werden.
             </p>
         </div>
-    <?
+    <?php
     }
 
     public function display_settings()
