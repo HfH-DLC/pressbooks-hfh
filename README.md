@@ -4,9 +4,9 @@ This WordPress plugin extends the Pressbooks plugin with additional features use
 
 ## Features
 
-### Book Posts Password
+### Book Password
 
-This feature allows authors to easily set a single password for all of their book posts at `Organize > Book Posts Password`.
+This feature allows authors to easily set a single password for all of their book posts at `Organize > Book Password`.
 
 Implemented in `components/book_posts_password.php`.
 
@@ -15,7 +15,7 @@ Implemented in `components/book_posts_password.php`.
 This feature allows users to track their reading progress. At the end of every chapter a button is displayed that allows the user to mark the chapter as read.
 In the table of contents progress indicators are added to show which chapters have been marked. Additionally, a new progress page is added to the main menu with an overview of the reading progress across the entire book.
 
-This feature can be activated at `Hfh > Pressbooks` by checking the `Show learning progress` checkbox.
+This feature can be activated in the `Hfh` menu by checking the `Show learning progress` checkbox.
 
 Implemented in `components/course_progress.php`.
 
