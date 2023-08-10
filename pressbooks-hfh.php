@@ -110,8 +110,9 @@ add_action('admin_enqueue_scripts', 'hfh_pb_admin_fix');
 function hfh_details_h5p_iframe_resize_fix()
 {
 	wp_enqueue_script(
-		'hfh_details_h5p_iframe_resize',
-		HFH_PLUGIN_URL . 'components/js/details_h5p_iframe_resize.js',
+		'hfh_details_h5p_iframe_resize_fix',
+		HFH_PLUGIN_URL . 'components/js/details_h5p_iframe_resize_fix.js',
+		array('h5p-core-js-jquery')
 	);
 }
 add_action('wp_enqueue_scripts', 'hfh_details_h5p_iframe_resize_fix');
