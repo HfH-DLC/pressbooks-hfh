@@ -60,6 +60,13 @@ We fix this be calling a window resize event whenver a details element is toggle
 
 Implemented in `components/js/details_h5p_iframe_resize.js`
 
+### Gamipress Notifications H5P Fix
+
+The Gamipress Notifications Plugin does not react to ajax requests made from inside a H5P iframe.
+In order to still get live notifications we listen to the H5P ourselves and trigger the Gamipress listener.
+
+Implemented in `components/js/gamipress_notifications_h5p_fix.js`
+
 ## Usage
 
 Sass styles can be compiled with `sass components/scss:components/css --no-source-map`.

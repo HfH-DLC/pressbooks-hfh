@@ -116,6 +116,19 @@ function hfh_details_h5p_iframe_resize_fix()
 }
 add_action('wp_enqueue_scripts', 'hfh_details_h5p_iframe_resize_fix');
 
+/**
+ * Add Gamipress Notifications H5P fix
+ */
+function hfh_gamipress_notifications_h5p_fix()
+{
+	wp_enqueue_script(
+		'hfh_gamipress_notifications_h5p_fix',
+		HFH_PLUGIN_URL . 'components/js/gamipress_notifications_h5p_fix.js',
+		array('h5p-core-js-jquery')
+	);
+}
+add_action('wp_enqueue_scripts', 'hfh_gamipress_notifications_h5p_fix');
+
 // /**
 //  * Replace default cover url.
 //  *
