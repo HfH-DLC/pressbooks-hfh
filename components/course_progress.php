@@ -93,20 +93,23 @@ class CourseProgress
         $front_matter = array('post_title' => 'Front Matter', 'chapters' => $structure['front-matter']);
         $back_matter = array('post_title' => 'Back Matter', 'chapters' => $structure['back-matter']);
         $parts = array_merge(array($front_matter), $structure['part'], array($back_matter));
-        $parts = array_map(function ($part) {
-            return array(
-                'ID' => isset($part['ID']) ? $part['ID'] : '',
-                'title' => $part['post_title'],
-                'completion' => $this->get_completion($part['chapters'])
-            );
-        },  $parts);
+        $parts = array_reduce($parts, function ($carry, $item) {
+            if (count($item['chapters']) > 0) {
+                $part = array(
+                    'ID' => isset($item['ID']) ? $item['ID'] : '',
+                    'title' => $item['post_title'],
+                    'completion' => $this->get_completion($item['chapters'])
+                );
+                $carry[] = $part;
+            }
+            return $carry;
+        }, []);
 
         $progress = array_reduce($parts, function ($carry, $item) {
             $carry['complete'] += $item['completion']['complete'];
             $carry['total'] += $item['completion']['total'];
             return $carry;
         },  array('total' => 0, 'complete' => 0, 'parts' => $parts));
-
         return $progress;
     }
 

@@ -3,7 +3,6 @@
 namespace HfH\Pressbooks;
 
 get_header();
-
 $progress = CourseProgress::get_instance()->get_progress();
 
 ?>

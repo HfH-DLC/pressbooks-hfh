@@ -1,22 +1,29 @@
-.hfh-course-progress {
+#main .hfh-course-progress {
   margin-block: 2rem;
 }
-
-.hfh-course-progress .hfh-course-progress-list {
+#main .hfh-course-progress .hfh-course-progress-list {
   list-style: none;
   padding: 0;
+  margin-top: 2rem;
 }
-
-.hfh-course-progress .hfh-course-progress-list li {
+#main .hfh-course-progress .hfh-course-progress-list li {
   margin-bottom: 1rem;
 }
-
-.hfh-course-progress .hfh-chapter td,
-.hfh-course-progress .hfh-chapter th {
-  vertical-align: middle;
+#main .hfh-course-progress .hfh-course-progress-list .hfh-chapter__progress-indicator {
+  margin-left: auto;
 }
-
-.hfh-course-progress .hfh-progress-bar-wrapper {
+#main .hfh-course-progress .hfh-part {
+  margin-top: 1rem;
+}
+#main .hfh-course-progress .hfh-chapter {
+  table-layout: auto;
+}
+#main .hfh-course-progress .hfh-chapter td {
+  vertical-align: middle;
+  padding-inline: 0.5rem;
+  padding-block: 0.5rem;
+}
+#main .hfh-course-progress .hfh-progress-bar-wrapper {
   display: grid;
   grid-template-columns: 1fr 10rem;
   align-items: center;
@@ -24,41 +31,34 @@
   justify-content: space-between;
   gap: 1rem;
 }
-
-.hfh-course-progress .hfh-progress-bar {
+#main .hfh-course-progress .hfh-progress-bar {
   position: relative;
   background-color: #f2d1d3;
   width: 100%;
   overflow: hidden;
   border: 1px solid #be1925;
 }
-
-.hfh-course-progress .hfh-progress-bar__value {
+#main .hfh-course-progress .hfh-progress-bar__value {
   height: 1.5rem;
   background-color: #be1925;
 }
-
-.hfh-course-progress .hfh-progress-bar__count {
+#main .hfh-course-progress .hfh-progress-bar__count {
   flex-shrink: 0;
   font-size: 1rem;
   text-align: right;
 }
-
-.hfh-course-progress .hfh-progress-bar__percentage {
+#main .hfh-course-progress .hfh-progress-bar__percentage {
   font-weight: bold;
   color: #be1925;
 }
-
-.hfh-course-progress .hfh-chapter {
+#main .hfh-course-progress .hfh-chapter {
   margin-top: 1rem;
   width: 100%;
 }
-
-.hfh-course-progress td:first-child {
+#main .hfh-course-progress td:first-child {
   width: 90%;
 }
-
-.hfh-course-progress td:last-child {
+#main .hfh-course-progress td:last-child {
   width: 10%;
   text-align: right;
 }
