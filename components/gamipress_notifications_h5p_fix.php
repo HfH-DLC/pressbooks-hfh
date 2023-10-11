@@ -15,9 +15,6 @@ class GamipressNotificationsH5PFix
 {
     private static $instance = false;
 
-
-    const ACTIVE_OPTION = 'hfh_pressbooks_gamipress_notifications_h5p_fix_active';
-
     public static function get_instance()
     {
         if (!self::$instance) {
@@ -28,7 +25,7 @@ class GamipressNotificationsH5PFix
 
     private function __construct()
     {
-        if (get_option(self::ACTIVE_OPTION)) {
+        if (get_option(AdminMenu::GAMIPRESS_FIXES_ACTIVE_OPTION)) {
             add_action('init', array($this, 'init'));
         }
     }

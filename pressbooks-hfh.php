@@ -14,6 +14,7 @@ use HfH\Pressbooks\BookPostsPassword;
 use HfH\Pressbooks\ChapterCategories;
 use HfH\Pressbooks\CourseProgress;
 use HfH\Pressbooks\GamipressNotificationsH5PFix;
+use HfH\Pressbooks\GamipressRestrictContentH5PReload;
 use HfH\Pressbooks\Shortcodes;
 
 if (!defined('ABSPATH')) {
@@ -50,6 +51,8 @@ require_once 'components/shortcodes.php';
 Shortcodes::get_instance();
 require_once 'components/gamipress_notifications_h5p_fix.php';
 GamipressNotificationsH5PFix::get_instance();
+require_once 'components/gamipress_restrict_content_h5p_reload.php';
+GamipressRestrictContentH5PReload::get_instance();
 
 /**
  * Remove references to pressbooks.com..

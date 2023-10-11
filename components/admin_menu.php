@@ -3,13 +3,15 @@
 namespace Hfh\Pressbooks;
 
 use HfH\Pressbooks\CourseProgress;
-use HfH\Pressbooks\GamipressNotificationsH5PFix;
 
 class AdminMenu
 {
     const NONCE = '_hfh_pressbooks_wpnonce';
     const SLUG = 'hfh-pressbooks';
     const ACTION = 'hfh_pressbooks_save_settings';
+    const SETTINGS_SLUG = self::SLUG . '-settings';
+
+    const GAMIPRESS_FIXES_ACTIVE_OPTION  = 'hfh_pressbooks_gamipress_fixes_active';
 
     private static $instance = false;
 
@@ -33,9 +35,9 @@ class AdminMenu
     {
         add_menu_page("HfH Pressbooks", 'HfH Pressbooks', 'manage_options', self::SLUG);
         add_submenu_page(self::SLUG, 'Übersicht', 'Übersicht', 'manage_options', self::SLUG, array($this, 'display_overview'));
-        add_submenu_page(self::SLUG, 'Einstellungen', 'Einstellungen', 'manage_options', self::SLUG . '-settings', array($this, 'display_settings'));
+        add_submenu_page(self::SLUG, 'Einstellungen', 'Einstellungen', 'manage_options', self::SETTINGS_SLUG, array($this, 'display_settings'));
         add_option(CourseProgress::ACTIVE_OPTION, false);
-        add_option(GamipressNotificationsH5PFix::ACTIVE_OPTION, false);
+        add_option(self::GAMIPRESS_FIXES_ACTIVE_OPTION, false);
     }
 
     function display_overview()
@@ -66,10 +68,15 @@ class AdminMenu
             <h4>[hfh_confetti]</h4>
             <p>Dieser Shortcode zeigt beim Laden der Seite Konfetti an. Die Farben der Konfetti können mit dem Attribute "colors" definiert werden, z.B. [hfh_confetti colors="#BE1925,#E31826,#D8757C,#F2D1D3,#F8E8E9,#FBF3F4,#767676,#14776c,#F08100,#FFCD00"].
             </p>
-            <h3>Gamipress Notifications H5P Fix</h3>
+            <h3>Gamipress Fixes</h3>
             <p>
-                Das Gamipress Notifications Plugin erkennt nicht, wenn ein H5P beantwortet wird, bis die Seite neu geladen wird.
-                Unter <a href="<?= admin_url('admin.php?page=hfh-settings') ?>">HfH Pressbooks > Einstellungen</a> kann ein Fix dafür aktiviert werden.
+                Unter <a href="<?= admin_url('admin.php?page=hfh-settings') ?>">HfH Pressbooks > Einstellungen</a> können diverse Fixes für Gamipress aktiviert werden:
+            <ul>
+                <li>Das Gamipress Notifications Plugin erkennt nicht, wenn ein H5P beantwortet wird, bis die Seite neu geladen wird.
+                <li>
+                <li>Das Gamipress Restrict Content Plugin lädt die Seite nicht neu, wenn eine Benutzer:in erfolgreich ein H5P beantwortet, und dadurch Zugang erhalten sollte.
+                <li>
+            </ul>
             </p>
         </div>
     <?php
@@ -91,12 +98,12 @@ class AdminMenu
                         </td>
                     </tr>
                 </table>
-                <h3>Gamipress Notifications H5P Fix</h3>
+                <h3>Gamipress</h3>
                 <table class="form-table">
                     <tr>
-                        <th scope="row"><label for="gamipress_notfications_h5p_fix_active">Fix aktivieren</label></th>
+                        <th scope="row"><label for="<?= self::GAMIPRESS_FIXES_ACTIVE_OPTION  ?>">Gamipress Fixes aktivieren</label></th>
                         <td>
-                            <input type="checkbox" name="<?= GamipressNotificationsH5PFix::ACTIVE_OPTION ?>" id="gamipress_notfications_h5p_fix_active" value="true" <?= get_option(GamipressNotificationsH5PFix::ACTIVE_OPTION) ? 'checked' : '' ?>>
+                            <input type="checkbox" name="<?= self::GAMIPRESS_FIXES_ACTIVE_OPTION   ?>" id="<?= self::GAMIPRESS_FIXES_ACTIVE_OPTION   ?>" value="true" <?= get_option(self::GAMIPRESS_FIXES_ACTIVE_OPTION) ? 'checked' : '' ?>>
                         </td>
                     </tr>
                 </table>
@@ -112,10 +119,10 @@ class AdminMenu
     {
         check_admin_referer(self::ACTION, self::NONCE);
         update_option(CourseProgress::ACTIVE_OPTION, isset($_POST[CourseProgress::ACTIVE_OPTION]));
-        update_option(GamipressNotificationsH5PFix::ACTIVE_OPTION, isset($_POST[GamipressNotificationsH5PFix::ACTIVE_OPTION]));
+        update_option(self::GAMIPRESS_FIXES_ACTIVE_OPTION, isset($_POST[self::GAMIPRESS_FIXES_ACTIVE_OPTION]));
         $url = add_query_arg(
             array(
-                'page' => self::SLUG,
+                'page' => self::SETTINGS_SLUG,
                 'updated' => true,
             ),
             admin_url('admin.php')
@@ -127,8 +134,7 @@ class AdminMenu
 
     function display_notice()
     {
-
-        if (isset($_GET['page']) && $_GET['page'] == self::SLUG && isset($_GET['updated'])) {
+        if (isset($_GET['page']) && $_GET['page'] == self::SETTINGS_SLUG && isset($_GET['updated'])) {
             echo '<div id="message" class="updated notice is-dismissible"><p>Settings updated.</p><button type="button" class="notice-dismiss"><span class="screen-reader-text">Dismiss this notice.</span></button></div>';
         }
     }

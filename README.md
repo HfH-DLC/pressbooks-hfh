@@ -60,12 +60,21 @@ We fix this by calling a window resize event whenver a details element is toggle
 
 Implemented in `components/js/details_h5p_iframe_resize_fix.js`
 
-### Gamipress Notifications H5P Fix
+### Gamipress Fixes
+
+#### Notifications
 
 The Gamipress Notifications Plugin does not react to ajax requests made from inside a H5P iframe.
 In order to still get live notifications we listen to the H5P ourselves and trigger the Gamipress listener.
 
-Implemented in `components/js/gamipress_notifications_h5p_fix.js`
+Implemented in `components/gamipress_notifications_h5p_fix.php`
+
+#### Restrict Content Reload
+
+The Gamipress Restrict Content Plugin does not reload the page, when a user has completed a H5P which would give them access.
+To fix this make an ajax call whenever a H5P is completed to check if the user has now gained access and reload the page if necessary.
+
+Implemented in `components/gamipress_restrict_content_h5p_reload.php`
 
 ## Usage
 
