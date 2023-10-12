@@ -73,9 +73,7 @@ class AdminMenu
                 Unter <a href="<?= admin_url('admin.php?page=hfh-settings') ?>">HfH Pressbooks > Einstellungen</a> können diverse Fixes für Gamipress aktiviert werden:
             <ul>
                 <li>Das Gamipress Notifications Plugin erkennt nicht, wenn ein H5P beantwortet wird, bis die Seite neu geladen wird.
-                <li>
-                <li>Das Gamipress Restrict Content Plugin lädt die Seite nicht neu, wenn eine Benutzer:in erfolgreich ein H5P beantwortet, und dadurch Zugang erhalten sollte.
-                <li>
+                </li>
             </ul>
             </p>
         </div>

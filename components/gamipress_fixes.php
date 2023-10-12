@@ -11,7 +11,9 @@
 
 namespace HfH\Pressbooks;
 
-class GamipressNotificationsH5PFix
+use Hfh\Pressbooks\AdminMenu;
+
+class GamipressFixes
 {
     private static $instance = false;
 
@@ -33,13 +35,14 @@ class GamipressNotificationsH5PFix
     public function init()
     {
         add_action('wp_enqueue_scripts',  array($this, 'wp_enqueue_scripts'));
+        add_action('wp_ajax_pressbooks_hfh_gamipress_restrict_content_check_access', array($this, 'check_access'));
     }
 
     public function wp_enqueue_scripts()
     {
         wp_enqueue_script(
-            'hfh_gamipress_notifications_h5p_fix',
-            HFH_PLUGIN_URL . 'components/js/gamipress_notifications_h5p_fix.js',
+            'hfh_gamipress_restrict_content_h5p_reload',
+            HFH_PLUGIN_URL . 'components/js/gamipress_fixes.js',
             array('h5p-core-js-jquery')
         );
     }
