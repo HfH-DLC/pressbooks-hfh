@@ -11,7 +11,7 @@ class AdminMenu
     const ACTION = 'hfh_pressbooks_save_settings';
     const SETTINGS_SLUG = self::SLUG . '-settings';
 
-    const GAMIPRESS_FIXES_ACTIVE_OPTION  = 'hfh_pressbooks_gamipress_fixes_active';
+    const GAMIPRESS_FIXES_ACTIVE_OPTION  = 'hfh_pressbooks_gamipress_notifications_h5p_fix_active';
 
     private static $instance = false;
 
