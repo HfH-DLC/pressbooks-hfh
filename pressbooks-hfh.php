@@ -13,7 +13,6 @@ use Hfh\Pressbooks\AdminMenu;
 use HfH\Pressbooks\BookPostsPassword;
 use HfH\Pressbooks\ChapterCategories;
 use HfH\Pressbooks\CourseProgress;
-use HfH\Pressbooks\GamipressNotificationsH5PFix;
 use HfH\Pressbooks\GamipressFixes;
 use HfH\Pressbooks\Shortcodes;
 
@@ -28,7 +27,7 @@ if (!defined('ABSPATH')) {
 // error_reporting( E_ALL );
 // }
 
-
+define('HFH_PLUGIN_VERSION', '1.0.12');
 define('HFH_PLUGIN_URL', plugin_dir_url(__FILE__));
 define('HFH_PLUGIN_DIR', plugin_dir_path(__FILE__));
 
@@ -116,7 +115,8 @@ function hfh_details_h5p_iframe_resize_fix()
 	wp_enqueue_script(
 		'hfh_details_h5p_iframe_resize_fix',
 		HFH_PLUGIN_URL . 'components/js/details_h5p_iframe_resize_fix.js',
-		array('h5p-core-js-jquery')
+		array('h5p-core-js-jquery'),
+		HFH_PLUGIN_VERSION
 	);
 }
 add_action('wp_enqueue_scripts', 'hfh_details_h5p_iframe_resize_fix');

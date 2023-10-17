@@ -55,7 +55,8 @@ class CourseProgress
         wp_enqueue_script(
             'hfh-course-progress-ajax',
             HFH_PLUGIN_URL . 'components/js/course_progress.js',
-            array('jquery')
+            array('jquery'),
+            HFH_PLUGIN_VERSION
         );
         wp_localize_script(
             'hfh-course-progress-ajax',

@@ -28,8 +28,7 @@ function hfh_enqueue_quicktag_script()
     wp_register_style($handle, $src, $deps, $ver);
     // Enqueue the style.
     wp_enqueue_style('jquery-ui');
-
-    wp_enqueue_style('hfh-quicktags',  plugins_url('components/css/quicktags.css', dirname(__FILE__)));
+    wp_enqueue_style('hfh-quicktags',  plugins_url('components/css/quicktags.css', dirname(__FILE__)), array(), HFH_PLUGIN_VERSION);
     wp_enqueue_script('jquery-ui-dialog');
-    wp_enqueue_script('hfh_quicktags', plugins_url('components/js/quicktags.js', dirname(__FILE__)), array('jquery', 'quicktags'), '1.0.0', true);
+    wp_enqueue_script('hfh_quicktags', plugins_url('components/js/quicktags.js', dirname(__FILE__)), array('jquery', 'quicktags'), HFH_PLUGIN_VERSION, true);
 }

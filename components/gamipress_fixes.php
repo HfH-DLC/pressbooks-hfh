@@ -43,7 +43,8 @@ class GamipressFixes
         wp_enqueue_script(
             'hfh_gamipress_restrict_content_h5p_reload',
             HFH_PLUGIN_URL . 'components/js/gamipress_fixes.js',
-            array('h5p-core-js-jquery')
+            array('h5p-core-js-jquery'),
+            HFH_PLUGIN_VERSION
         );
     }
 }

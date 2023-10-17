@@ -116,6 +116,5 @@ document.addEventListener("DOMContentLoaded", () => {
         },
       },
     });
-    console.log("tsParticles.load finished");
   })();
 });
