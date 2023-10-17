@@ -43,6 +43,7 @@ class Shortcodes
         wp_register_script('pressbooks_hfh_chapter_parts_shortcode_script', HFH_PLUGIN_URL . 'components/js/chapter_parts_shortcode.js', array("jquery"));
         wp_register_script('pressbooks_hfh_confetti_third_party', 'https://cdn.jsdelivr.net/npm/tsparticles@2.11.0/tsparticles.bundle.min.js');
         wp_register_script('pressbooks_hfh_confetti_shortcode_script', HFH_PLUGIN_URL . 'components/js/confetti_shortcode.js', array("pressbooks_hfh_confetti_third_party"));
+        wp_enqueue_script('pressbooks_hfh_confetti_shortcode_script');
     }
 
     public function parts_shortcode($atts)
@@ -125,12 +126,7 @@ class Shortcodes
             'colors' => '#be1925'
         );
         $attributes = shortcode_atts($defaults, $atts, 'hfh_chapter');
-
         $colors_no_whitespaces = preg_replace('/\s*,\s*/', ',', sanitize_text_field($attributes['colors']));
-        $colors = explode(",", $colors_no_whitespaces);
-
-
-        wp_enqueue_script('pressbooks_hfh_confetti_shortcode_script');
-        wp_add_inline_script('pressbooks_hfh_confetti_shortcode_script', 'const CONFETTI_COLORS = ' . json_encode($colors), 'before');
+        return "<div class='pressbooks-hfh-confetti' data-colors='" . $colors_no_whitespaces . "'></div>";
     }
 }
