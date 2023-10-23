@@ -14,6 +14,8 @@ use HfH\Pressbooks\BookPostsPassword;
 use HfH\Pressbooks\ChapterCategories;
 use HfH\Pressbooks\CourseProgress;
 use HfH\Pressbooks\GamipressFixes;
+use Hfh\Pressbooks\NetworkAdminMenu;
+use HfH\Pressbooks\NetworkNotificationBanner;
 use HfH\Pressbooks\Shortcodes;
 
 if (!defined('ABSPATH')) {
@@ -40,6 +42,8 @@ require_once 'components/quicktags.php';
 require_once 'components/h5p.php';
 require_once 'components/admin_menu.php';
 AdminMenu::get_instance();
+require_once 'components/network_admin_menu.php';
+NetworkAdminMenu::get_instance();
 require_once 'components/book_posts_password.php';
 BookPostsPassword::get_instance();
 require_once 'components/chapter_categories.php';
@@ -50,6 +54,8 @@ require_once 'components/shortcodes.php';
 Shortcodes::get_instance();
 require_once 'components/gamipress_fixes.php';
 GamipressFixes::get_instance();
+require_once 'components/notification_banner.php';
+NetworkNotificationBanner::get_instance();
 
 /**
  * Remove references to pressbooks.com..

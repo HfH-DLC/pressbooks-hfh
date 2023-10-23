@@ -50,7 +50,7 @@ class AdminMenu
 
             <h3>Lesefortschritt</h3>
             <p>
-                Unter <a href="<?= admin_url('admin.php?page=hfh-settings') ?>">HfH Pressbooks > Einstellungen</a> kann der Lesefortschritt eingestellt werden. Am Ende jedes Kapitels wird ein Button angezeigt, mit dem der Benutzer das Kapitel als bearbeitet markieren kann. Im Inhaltsverzeichnis wird angezeigt, welche Kapitel bereits bearbeitet wurden. Im Menü wird die Seite "Fortschritt" verfügbar.
+                Unter <a href="<?= admin_url('admin.php?page=' . self::SETTINGS_SLUG) ?>">HfH Pressbooks > Einstellungen</a> kann der Lesefortschritt eingestellt werden. Am Ende jedes Kapitels wird ein Button angezeigt, mit dem der Benutzer das Kapitel als bearbeitet markieren kann. Im Inhaltsverzeichnis wird angezeigt, welche Kapitel bereits bearbeitet wurden. Im Menü wird die Seite "Fortschritt" verfügbar.
             </p>
             <h3>Kapitelkategorien</h3>
             <p>
@@ -70,7 +70,7 @@ class AdminMenu
             </p>
             <h3>Gamipress Fixes</h3>
             <p>
-                Unter <a href="<?= admin_url('admin.php?page=hfh-settings') ?>">HfH Pressbooks > Einstellungen</a> können diverse Fixes für Gamipress aktiviert werden:
+                Unter <a href="<?= admin_url('admin.php?page=' . self::SETTINGS_SLUG) ?>">HfH Pressbooks > Einstellungen</a> können diverse Fixes für Gamipress aktiviert werden:
             <ul>
                 <li>Das Gamipress Notifications Plugin erkennt nicht, wenn ein H5P beantwortet wird, bis die Seite neu geladen wird.
                 </li>
