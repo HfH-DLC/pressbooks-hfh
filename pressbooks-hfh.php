@@ -2,7 +2,7 @@
 /*
 Plugin Name: Pressbooks HfH
 Description: HfH additions for Pressbooks
-Version: 1.0.12
+Version: 1.0.13
 Author: Sarah Frederickx, Stephan Müller, Lukas Kaiser, Matthias Nötzli
 Copyright: © 2017, ETH Zurich, D-HEST, Stephan J. Müller, Lukas Kaiser, © 2022, HfH, DLC, Matthias Nötzli
 License: GPLv2
@@ -29,7 +29,7 @@ if (!defined('ABSPATH')) {
 // error_reporting( E_ALL );
 // }
 
-define('HFH_PLUGIN_VERSION', '1.0.12');
+define('HFH_PLUGIN_VERSION', '1.0.13');
 define('HFH_PLUGIN_URL', plugin_dir_url(__FILE__));
 define('HFH_PLUGIN_DIR', plugin_dir_path(__FILE__));
 
@@ -56,6 +56,16 @@ require_once 'components/gamipress_fixes.php';
 GamipressFixes::get_instance();
 require_once 'components/notification_banner.php';
 NetworkNotificationBanner::get_instance();
+
+/**
+ * Allow access to all post types in admin
+ * (Pressbooks blocks all non PB post types by default.)
+ */
+add_filter('pb_supported_post_types', 'hfh_pb_supported_post_types');
+function hfh_pb_supported_post_types($post_types)
+{
+	return get_post_types();
+}
 
 /**
  * Remove references to pressbooks.com..
