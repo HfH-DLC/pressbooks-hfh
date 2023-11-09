@@ -16,7 +16,7 @@ class CourseProgress
     private static $instance = false;
 
     const PAGE_QUERY_VAR = 'hfh_page';
-    const ALLOWED_POST_TYPES = array('front-matter', 'chapter', 'back-matter');
+    const ALLOWED_POST_TYPES = array('chapter');
     const NONCE_ACTION = 'hfh_chapter_complete';
     const PROGRESS_PAGE_NAME = 'progress';
     const PROGRESS_USER_META_KEY = 'hfh-course-progress';
