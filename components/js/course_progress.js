@@ -7,9 +7,11 @@ jQuery(document).ready(function ($) {
     "#main #content .toc>li, #main #content .toc__chapters>li, #page nav.reading-header__inside .toc li"
   ).each(function () {
     const id = $(this).attr("id").split("-").pop();
-    const $icon = $(getProgressIcon(isCompleted(phpVars.progress, id)));
-    $icon.attr("id", getIconElementId(id));
-    $(this).find(">.toc__title__container").prepend($icon);
+    if (shouldDisplayProgress(phpVars.progress, id)) {
+      const $icon = $(getProgressIcon(isCompleted(phpVars.progress, id)));
+      $icon.attr("id", getIconElementId(id));
+      $(this).find(">.toc__title__container").prepend($icon);
+    }
   });
 
   $("#hfh-course-progress-chapter-complete").submit(function (e) {
@@ -57,6 +59,19 @@ jQuery(document).ready(function ($) {
       },
     });
   });
+
+  function shouldDisplayProgress(progress, id) {
+    const part = progress.parts.find((part) => part.ID == id);
+    if (part) {
+      return !!part.chapters;
+    }
+    return progress.parts
+      .reduce((acc, cur) => {
+        acc.push(...cur.completion.chapters);
+        return acc;
+      }, [])
+      .some((chapter) => chapter.ID == id);
+  }
 
   function updateProgressIcon(id, complete) {
     const elementId = getIconElementId(id);
