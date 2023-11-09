@@ -91,9 +91,7 @@ class CourseProgress
     public function get_progress()
     {
         $structure = pb_get_book_structure();
-        $front_matter = array('post_title' => 'Front Matter', 'chapters' => $structure['front-matter']);
-        $back_matter = array('post_title' => 'Back Matter', 'chapters' => $structure['back-matter']);
-        $parts = array_merge(array($front_matter), $structure['part'], array($back_matter));
+        $parts =  $structure['part'];
         $parts = array_reduce($parts, function ($carry, $item) {
             if (count($item['chapters']) > 0) {
                 $part = array(
