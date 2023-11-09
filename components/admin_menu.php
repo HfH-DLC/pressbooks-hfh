@@ -56,12 +56,6 @@ class AdminMenu
             <p>
                 Unter <a href="<?= admin_url('edit-tags.php?taxonomy=category&post_type=chapter') ?>">Organisieren > Kapitelkategorien</a> ist die Kategorie-Seite für Kapitel verfügbar, die in Pressbooks standardmässig versteckt ist.
             </p>
-            <h3>Shibboleth Zugriff</h3>
-            <p>
-                Unter <a href="<?= admin_url('options-general.php?page=pressbooks_sharingandprivacy_options') ?>">Einstellungen > Freigabe & Datenschutz</a>
-                kann eingestellt werden, Angehörige welcher Organisation ein privates Buch lesen dürfen. Benutzer*innen, die über diese Option Zugriff auf ein Buch erhalten, erhalten die Rolle "Abonnent".
-                Sie verlieren die Zugriffsrechte nicht mehr, auch wenn sich diese Einstellung oder ihre Organisationsangehörigkeit ändern.
-            </p>
             <h3>Shortcodes</h3>
             <h4>[hfh_parts] und [hfh_chapters]</h4>
             <p>Diese beiden Shortcodes zeigen die Teile resp. Kapitel des Buches an. Mit dem Attribut "color" kann die Hauptfarbe gesetzt werden, z.B. [hfh_chapters color="#E31826"].</p>

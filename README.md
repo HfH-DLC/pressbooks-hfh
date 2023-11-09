@@ -31,14 +31,6 @@ This feature adds a button to the Wordpress Text Editor that lets users specify 
 
 Implemented in `components/quicktags.php`.
 
-### Subscriber Management
-
-Using the [Shibboleth plugin](https://wordpress.org/plugins/shibboleth/), users belonging to a certain organization can be granted subscriber permissions automatically. The groups being able to access a certain book can be selected at `Settings > Privacy`.
-
-For this feature to work properly, a small modification needs to be made to the source code of the Shibboleth plugin.
-
-Implemented in `components/user.php`.
-
 ### Custom Shortcodes
 
 - `hfh_parts` and `hfh_chapters` provide a linked visualization of the parts and chapters of the book. The intent is that they are put on top of the page with `hfh_parts` before `hfh_chapters` if both are used.
