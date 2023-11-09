@@ -61,9 +61,9 @@ jQuery(document).ready(function ($) {
   });
 
   function shouldDisplayProgress(progress, id) {
-    const part = progress.parts.find((part) => part.ID == id);
-    if (part) {
-      return !!part.chapters;
+    const isPart = progress.parts.some((part) => part.ID == id);
+    if (isPart) {
+      return true;
     }
     return progress.parts
       .reduce((acc, cur) => {
