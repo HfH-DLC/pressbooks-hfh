@@ -156,7 +156,7 @@ add_action('wp_enqueue_scripts', 'hfh_details_h5p_iframe_resize_fix');
  */
 function hfh_pb_default_cover_path($default_path, $suffix)
 {
-	return get_stylesheet_directory() . "/images/default-book-cover${suffix}.jpg";
+	return get_stylesheet_directory() . "/images/default-book-cover{$suffix}.jpg";
 }
 add_filter('pb_default_cover_path', 'hfh_pb_default_cover_path', 10, 2);
 
