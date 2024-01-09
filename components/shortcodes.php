@@ -41,7 +41,7 @@ class Shortcodes
     {
         wp_register_style('pressbooks_hfh_chapter_parts_shortcodes_style', HFH_PLUGIN_URL . 'components/css/chapter_parts_shortcodes.css', array(), HFH_PLUGIN_VERSION);
         wp_register_script('pressbooks_hfh_chapter_parts_shortcode_script', HFH_PLUGIN_URL . 'components/js/chapter_parts_shortcode.js', array("jquery"), HFH_PLUGIN_VERSION);
-        wp_register_script('pressbooks_hfh_confetti_third_party', 'https://cdn.jsdelivr.net/npm/tsparticles@2.11.0/tsparticles.bundle.min.js');
+        wp_register_script('pressbooks_hfh_confetti_third_party', HFH_PLUGIN_URL . 'components/js/tsparticles.bundle.min.js', '2.11.0');
         wp_register_script('pressbooks_hfh_confetti_shortcode_script', HFH_PLUGIN_URL . 'components/js/confetti_shortcode.js', array("pressbooks_hfh_confetti_third_party"), HFH_PLUGIN_VERSION);
         wp_enqueue_script('pressbooks_hfh_confetti_shortcode_script');
     }
