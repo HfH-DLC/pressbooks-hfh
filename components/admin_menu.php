@@ -45,8 +45,8 @@ class AdminMenu
 ?>
         <div class="wrap">
             <h2>Übersicht</h2>
-            <h3>Buchpasswort</h3>
-            <p>Unter <a href="<?= admin_url('admin.php?page=hfh-book-password') ?>">Organisieren > Buchpasswort</a> kann ein Passwort für das komplette Buch gesetzt werden.</p>
+            <h3>Kapitelpasswort</h3>
+            <p>Unter <a href="<?= admin_url('admin.php?page=hfh-book-password') ?>">Organisieren > Kapitelpasswort</a> kann das Kapitelpasswort für alle Kapitel des Buches gesetzt oder entfernt werden.</p>
 
             <h3>Lesefortschritt</h3>
             <p>

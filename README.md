@@ -4,9 +4,9 @@ This WordPress plugin extends the Pressbooks plugin with additional features use
 
 ## Features
 
-### Book Password
+### Chapter Password
 
-This feature allows authors to easily set a single password for all of their book posts at `Organize > Book Password`.
+This feature allows authors to easily set a single password for all of their book posts at `Organize > Chapter Password`.
 
 Implemented in `components/book_posts_password.php`.
 
