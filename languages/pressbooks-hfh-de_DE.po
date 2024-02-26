@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Pressbooks HfH 1.0.11\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/pressbooks-hfh\n"
-"POT-Creation-Date: 2023-08-10T10:09:04+00:00\n"
-"PO-Revision-Date: 2023-08-10 12:11+0200\n"
+"POT-Creation-Date: 2024-02-26T09:08:24+00:00\n"
+"PO-Revision-Date: 2024-02-26 10:15+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de\n"
@@ -13,7 +13,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.1.1\n"
+"X-Generator: Poedit 3.4.2\n"
 "X-Domain: pressbooks-hfh\n"
 
 #. Plugin Name of the plugin
@@ -22,25 +22,29 @@ msgstr ""
 
 #. Description of the plugin
 msgid "HfH additions for Pressbooks"
-msgstr ""
+msgstr "HfH-Ergänzungen für Pressbooks"
 
 #. Author of the plugin
 msgid "Sarah Frederickx, Stephan Müller, Lukas Kaiser, Matthias Nötzli"
 msgstr ""
 
 #: components/book_posts_password.php:37 components/book_posts_password.php:38
-msgid "Book Password"
-msgstr "Buchpasswort"
+msgid "Chapter Password"
+msgstr "Kapitelpasswort"
 
 #: components/book_posts_password.php:54
 msgid "Password set successfully."
 msgstr "Passwort erfolgreich gesetzt."
 
-#: components/book_posts_password.php:61
+#: components/book_posts_password.php:59
+msgid "This form will set the chapter password for all chapters in this book. Submitting the form without a password will remove all chapter passwords."
+msgstr "Dieses Formular setzt das Kapitelpasswort für alle Kapitel in diesem Buch. Wird das Formular leer abgeschickt, werden alle Kapitelpasswörter entfernt."
+
+#: components/book_posts_password.php:64
 msgid "Password"
 msgstr "Passwort"
 
-#: components/book_posts_password.php:66
+#: components/book_posts_password.php:69
 msgid "Save"
 msgstr "Speichern"
 
@@ -48,38 +52,41 @@ msgstr "Speichern"
 msgid "Chapter Categories"
 msgstr "Kapitelkategorien"
 
-#: components/course_progress.php:67 components/course_progress.php:210
+#: components/course_progress.php:68 components/course_progress.php:212
 msgid "Mark Chapter as Complete"
 msgstr "Kapitel als bearbeitet markieren"
 
-#: components/course_progress.php:68 components/course_progress.php:210
+#: components/course_progress.php:69 components/course_progress.php:212
 msgid "Mark Chapter as Incomplete"
 msgstr "Kapitel als nicht bearbeitet markieren"
 
-#: components/course_progress.php:70
+#: components/course_progress.php:71
 msgid "Progress"
 msgstr "Fortschritt"
 
-#: components/course_progress.php:140
+#: components/course_progress.php:142
 msgid "Chapter"
 msgstr "Kapitel"
 
-#: components/course_progress.php:141
+#: components/course_progress.php:143
 msgid "Status"
 msgstr ""
 
-#: components/course_progress.php:152
+#: components/course_progress.php:154
 msgid "Chapter Complete"
 msgstr "Kapitel bearbeitet"
 
-#: components/course_progress.php:157
+#: components/course_progress.php:159
 msgid "Chapter Incomplete"
 msgstr "Kapitel nicht bearbeitet"
 
-#: components/course_progress.php:181
+#: components/course_progress.php:183
 msgid "%s%% Complete"
 msgstr "%s%% bearbeitet"
 
-#: components/templates/course_progress.php:11
+#: components/templates/course_progress.php:10
 msgid "Reading Progress"
 msgstr "Lesefortschritt"
+
+#~ msgid "Book Password"
+#~ msgstr "Buchpasswort"

@@ -34,8 +34,8 @@ class BookPostsPassword
     {
         add_submenu_page(
             'pb_organize',
-            __('Book Password', 'pressbooks-hfh'),
-            __('Book Password', 'pressbooks-hfh'),
+            __('Chapter Password', 'pressbooks-hfh'),
+            __('Chapter Password', 'pressbooks-hfh'),
             'edit_posts',
             'hfh-book-password',
             array($this, 'settings_page_html'),
@@ -55,12 +55,15 @@ class BookPostsPassword
                 </div>
             <?php endif; ?>
             <h1><?php echo esc_html(get_admin_page_title()); ?></h1>
+            <p>
+                <?= __('This form will set the chapter password for all chapters in this book. Submitting the form without a password will remove all chapter passwords.', 'pressbooks-hfh') ?>
+            </p>
             <form action="<?= admin_url('admin-post.php') ?>" method="post">
                 <?php wp_nonce_field('pressbooks-hfh_set_book_password', 'pressbooks-hfh_book-password-nonce'); ?>
                 <input type="hidden" name="action" value="set_book_password">
                 <label for="book_password"><?php _e('Password', 'pressbooks-hfh'); ?></label>
                 <div>
-                    <input type="text" name="book_password" id="book_password" style="text-align:left" value="" placeholder="<?php esc_attr_e('Password...', 'pressbooks'); ?>" maxlength="255" />
+                    <input type="text" name="book_password" id="book_password" style="text-align:left" value="" maxlength="255" />
                 </div>
                 <?php
                 submit_button(__('Save', 'pressbooks-hfh'));
