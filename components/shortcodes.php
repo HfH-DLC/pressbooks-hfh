@@ -52,23 +52,43 @@ class Shortcodes
         wp_enqueue_style('pressbooks_hfh_chapter_parts_shortcodes_style');
 
         $defaults = array(
-            'color' => null
+            'color' => null,
+            'include-front-matter' => false,
+            'include-back-matter' => false,
         );
         $atts = shortcode_atts($defaults, $atts, 'hfh_chapter');
         //used in shortcode template
         $parts_color =  sanitize_hex_color($atts['color']);
         $book_structure = pb_get_book_structure();
+        $front_matters = $book_structure['front-matter'];
         $parts = $book_structure['part'];
+        $back_matters = $book_structure['back-matter'];
         $current_id = get_the_ID();
         $current_part = null;
 
-        foreach ($parts as $index => $part) {
-            if ($current_part == null) {
+        foreach ($front_matters as $index => $chapter) {
+            if ($current_id === $chapter["ID"]) {
+                $current_part = ['ID' => 'front-matter'];
+                break;
+            }
+        }
+
+        if ($current_part === null) {
+            foreach ($parts as $index => $part) {
                 foreach ($part["chapters"] as $index => $chapter) {
                     if ($current_id == $chapter["ID"]) {
                         $current_part = $part;
                         break;
                     }
+                }
+            }
+        }
+
+        if ($current_part === null) {
+            foreach ($back_matters as $index => $chapter) {
+                if ($current_id === $chapter["ID"]) {
+                    $current_part =  ['ID' => 'back-matter'];
+                    break;
                 }
             }
         }
@@ -90,30 +110,57 @@ class Shortcodes
         //used in shortcode template
         $chapters_color =  sanitize_hex_color($atts['color']);
         $book_structure = pb_get_book_structure();
+        $front_matters = $book_structure['front-matter'];
+        $back_matters = $book_structure['back-matter'];
         $parts = $book_structure['part'];
+
         $current_id = get_the_ID();
         $current_index = null;
-        $current_part = null;
+        $current_part_chapters = null;
+        $chapters = [];
 
         foreach ($parts as $index => $part) {
-            if ($current_part == null) {
+            if ($current_part_chapters === null) {
                 foreach ($part["chapters"] as $index => $chapter) {
                     if ($current_id == $chapter["ID"]) {
                         $current_index = $index;
-                        $current_part = $part;
+                        $current_part_chapters = $part['chapters'];
                         break;
                     }
                 }
             }
         }
+        if ($current_part_chapters === null) {
+            foreach ($front_matters as $index => $chapter) {
+                if ($current_id == $chapter["ID"]) {
+                    $current_index = $index;
+                    $current_part_chapters = $front_matters;
+                    break;
+                }
+            }
+        }
 
-        $chapters = [$current_part["chapters"][$current_index]];
-        if ($current_index + 1 < count($current_part["chapters"])) {
-            $chapters[] = $current_part["chapters"][$current_index + 1];
+        if ($current_part_chapters === null) {
+            foreach ($back_matters as $index => $chapter) {
+                if ($current_id == $chapter["ID"]) {
+                    $current_index = $index;
+                    $current_part_chapters = $back_matters;
+                    break;
+                }
+            }
         }
-        if ($current_index + 2 < count($current_part["chapters"])) {
-            $chapters[] = $current_part["chapters"][$current_index + 2];
+
+        if ($current_part_chapters !== null && $current_index !== null) {
+            $chapters = [$current_part_chapters[$current_index]];
+            if ($current_index + 1 < count($current_part_chapters)) {
+                $chapters[] = $current_part_chapters[$current_index + 1];
+            }
+            if ($current_index + 2 < count($current_part_chapters)) {
+                $chapters[] = $current_part_chapters[$current_index + 2];
+            }
         }
+
+
 
         ob_start();
         include('templates/chapters_shortcode.php');
